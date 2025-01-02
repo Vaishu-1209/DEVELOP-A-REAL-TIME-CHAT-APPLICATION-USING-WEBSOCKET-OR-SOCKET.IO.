@@ -1,0 +1,49 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat Application</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; }
+        h1 { text-align: center; color: #4CAF50; }
+        #messages { list-style-type: none; padding: 0; margin: 0; }
+        #messages li { padding: 10px; background: #f1f1f1; margin-bottom: 5px; border-radius: 4px; }
+        #message-input { width: 75%; padding: 10px; }
+        #send-btn { padding: 10px 15px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+        #send-btn:hover { background: #45a049; }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Chat Application</h1>
+    <ul id="messages"></ul>
+    <input type="text" id="message-input" placeholder="Type a message..." autocomplete="off">
+    <button id="send-btn">Send</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io(); // Initialize the Socket.IO client
+
+        const messageInput = document.getElementById('message-input');
+        const sendBtn = document.getElementById('send-btn');
+        const messagesList = document.getElementById('messages');
+
+        // Send message when the Send button is clicked
+        sendBtn.addEventListener('click', () => {
+            const message = messageInput.value.trim();
+            if (message) {
+                socket.emit('chat message', message); // Emit message to the server
+                messageInput.value = ''; // Clear the input field
+            }
+        });
+
+        // Listen for incoming messages from the server
+        socket.on('chat message', (msg) => {
+            const li = document.createElement('li');
+            li.textContent = msg; // Append the message to the list
+            messagesList.appendChild(li);
+        });
+    </script>
+</body>
+</html>
