@@ -13,6 +13,7 @@
 **MENTOR NAME**: NEELA SANTOSH
 
 # DESCRIPTION OF TASK 
+
 Prerequisites: Node.js (installed) npm (Node Package Manager) Basic knowledge of JavaScript, HTML, CSS, and Node.js 
 Step 1: Initialize the Project 
 1.Create the project folder and initialize the Node.js project. 
@@ -30,3 +31,6 @@ Step 4: Run the Application
 Step 5: Test the Application Open multiple tabs or different browsers to test real-time communication. Type a message in one tab and press "Send". You should see the message appear in all other tabs in real-time. With the steps above, you have created a simple real-time chat application using Socket.IO. The server listens for chat messages and broadcasts them to all connected clients, while the frontend handles the user interface. You can expand this project with additional features, such as user authentication, message persistence, and advanced chat functionalities. 
 
 # OUTPUT OF THE TASK
+
+![Output2](https://github.com/user-attachments/assets/eecd21ca-8dc4-493e-8501-b06e1b98f02a)
+
